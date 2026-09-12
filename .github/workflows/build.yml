@@ -37,9 +37,9 @@ jobs:
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      # Add additional options to the MSBuild command line here (like platform or verbosity level).
-      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      # Build only the dxgi proxy project (the other projects are debug/logging
+      # helpers that fail against newer Windows SDKs and aren't needed).
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} /p:Platform=x64 dxgi-proxy\dxgi-proxy.vcxproj
       
     - uses: actions/upload-artifact@v4
       with:
