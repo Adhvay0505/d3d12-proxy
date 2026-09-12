@@ -44,5 +44,5 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: d3d12-proxy
-        path: ${{ github.workspace }}\x64\Release\*.dll
+        path: ${{ github.workspace }}\dxgi-proxy\x64\Release\*.dll
         if-no-files-found: error
